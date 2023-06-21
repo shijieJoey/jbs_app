@@ -4,7 +4,6 @@
   "author": "Joey Xiong",
   "description": "ju ben sha app",
   "license": "MIT",
-  "homepage": "https://github.com/shijieJoey/jbs_app#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shijieJoey/jbs_app.git"
@@ -13,13 +12,37 @@
     "electron",
     "reactjs"
   ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "main": "main.js",
+  "homepage": "./",
   "scripts": {
-    "start": "electron .",
-    "dev": "electronmon --trace-warnings ."
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "electron": "concurrently -k \"cross-env BROWSER=none yarn start\" \"electron .\"",
+    "electron-build": "yarn build && electron-builder -c.extraMetadata.main=main.js"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "concurrently": "^8.2.0",
+    "cross-env": "^7.0.3",
     "electron": "^25.1.1",
-    "electronmon": "^2.0.2"
+    "react-scripts": "^5.0.1"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.1.1",
+    "redux": "^4.2.1"
   }
 }

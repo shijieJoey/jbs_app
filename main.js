@@ -10,15 +10,17 @@ const createMainWindow = () => {
         webPreferences: {}
     });
 
+    mainWindow.webContents.openDevTools();
+
     const startUrl = format({
-        pathname: join(__dirname, 'index.html'),
+        pathname: join(__dirname, './build/index.html'),
         protocol: 'file'
     });
 
-    mainWindow.loadURL(startUrl);
+    mainWindow.loadURL('http://localhost:3000');
 
 }
 
-app.whenReady().then(createMainWindow);
+app.on('ready', createMainWindow);
 
 
